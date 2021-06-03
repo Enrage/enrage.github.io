@@ -1,0 +1,760 @@
+@font-face {
+  font-family: "ProximaNova";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/ProximaNova-Regular.eot");
+  src: local("Lato"),
+    url("../fonts/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/ProximaNova-Regular.woff2") format("woff2"),
+    url("../fonts/ProximaNova-Regular.woff") format("woff"),
+    url("../fonts/ProximaNova-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "ProximaNova";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/ProximaNova-Semibold.eot");
+  src: local("Lato"),
+    url("../fonts/ProximaNova-Semibold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/ProximaNova-Semibold.woff2") format("woff2"),
+    url("../fonts/ProximaNova-Semibold.woff") format("woff"),
+    url("../fonts/ProximaNova-Semibold.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "ProximaNova";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/ProximaNova-Bold.eot");
+  src: local("Lato"),
+    url("../fonts/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/ProximaNova-Bold.woff2") format("woff2"),
+    url("../fonts/ProximaNova-Bold.woff") format("woff"),
+    url("../fonts/ProximaNova-Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "ProximaNova";
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes show {
+  from {
+    transform: translateX(120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes hide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  &.menu_active {
+    overflow: hidden;
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      opacity: 0.6;
+      z-index: 10
+    }
+  }
+}
+
+#header {
+  width: 100%;
+  height: 100px;
+  background: #fff;
+  .container {
+    margin: auto;
+    max-width: 1140px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    .logo_tomberg {
+      display: block;
+      width: 193px;
+      height: 70px;
+      > img {
+        width: 100%;
+        height: 100%;
+        &.logo_desktop {
+          display: block;
+        }
+        &.logo_mobile {
+          display: none;
+        }
+      }
+    }
+    #top_menu {
+      height: 100%;
+      ul {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        li {
+          margin-right: 27px;
+          &:last-child {
+            margin-right: 0;
+          }
+          a {
+            text-transform: uppercase;
+            font: bold 16px "ProximaNova", sans-serif;
+            color: #2b2b2b;
+            &.menu_btn {
+              width: 21px;
+              height: 13px;
+              display: block;
+              background-image: url("../img/icon_menu.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+            &.search_btn {
+              width: 13px;
+              height: 13px;
+              display: block;
+              background-image: url("../img/icon_search.svg");
+              background-repeat: no-repeat;
+              background-size: contain;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .search_bar {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    transform: translateX(120%);
+    &.show {
+      animation: show 0.7s ease-in-out forwards;
+    }
+
+    .search_btn {
+      background-image: url("../img/icon_search.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: transparent;
+      width: 31px;
+      height: 31px;
+      margin-right: 25px;
+      cursor: pointer;
+    }
+    .search_input {
+      flex: 0 1 100%;
+      border: none;
+      border-bottom: 1px solid #000;
+      padding-bottom: 2px;
+      text-transform: uppercase;
+      color: #2b2b2b;
+      font: 400 25px "ProximaNova", sans-serif;
+      opacity: 0.5;
+    }
+    .search_close {
+      width: 21px;
+      height: 21px;
+      background-image: url("../img/icon_close.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-left: 35px;
+      cursor: pointer;
+    }
+  }
+}
+
+#main {
+  width: 100%;
+  background-color: #2b2b2b;
+  background-image: url("../img/statue.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right 0;
+  padding: 200px 0 300px;
+  .container {
+    max-width: 1140px;
+    width: 100%;
+    margin: auto;
+  }
+  .content {
+    max-width: 620px;
+    width: 100%;
+    .page_title {
+      font: bold 35px "ProximaNova", sans-serif;
+      margin-bottom: 55px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .main_text {
+      font: 400 20px "ProximaNova", sans-serif;
+      margin-bottom: 55px;
+      color: #fff;
+    }
+    .contact_us {
+      width: 305px;
+      height: 63px;
+      text-align: center;
+      background: #2b2b2b;
+      color: #fff;
+      font: 400 20px "ProximaNova", sans-serif;
+      line-height: 63px;
+      border: 1px solid #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      &:hover {
+        color: #2b2b2b;
+        background: #fff;
+      }
+    }
+  }
+}
+
+#offer_section {
+  width: 100%;
+  background: #fff;
+  padding: 66px 0 120px;
+  .container {
+    margin: auto;
+    max-width: 1140px;
+    width: 100%;
+  }
+  .section_title {
+    font: bold 20px "ProximaNova", sans-serif;
+    text-transform: uppercase;
+    color: #0f0f0f;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    &::after {
+      display: block;
+      content: "";
+      width: 83%;
+      height: 1px;
+      background: #000;
+      margin-left: 15px;
+    }
+  }
+  .offers {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .offer {
+      width: 360px;
+      padding: 30px 15px;
+      background: #151515;
+      text-align: center;
+      margin-bottom: 30px;
+      .offer_img {
+        margin-bottom: 30px;
+      }
+      .offer_title {
+        color: #fff;
+        font: bold 20px "ProximaNova", sans-serif;
+        margin-bottom: 16px;
+      }
+      .offer_text {
+        color: #fff;
+        font: 400 20px "ProximaNova", sans-serif;
+        opacity: 0.75;
+      }
+    }
+  }
+}
+
+#search_section {
+  width: 100%;
+  padding: 210px 0 300px;
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    background-image: url("../img/bg_search.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+  &::after {
+    content: "";
+    display: block;
+    background-color: #151515;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+  }
+  .container {
+    max-width: 1140px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 10;
+  }
+  .search_text {
+    display: flex;
+    margin-bottom: 60px;
+    .search_icon {
+      width: 60px;
+      height: 60px;
+      background-image: url("../img/icon_search_white.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin-right: 40px;
+    }
+    .search_input {
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+      background: transparent;
+      color: #fff;
+      text-transform: uppercase;
+      font: bold 35px "ProximaNova", sans-serif;
+    }
+  }
+
+  .search_select {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 68px;
+
+    .select_block {
+      display: flex;
+      border: 1px solid #fff;
+      width: 800px;
+    }
+
+    .select_box {
+      position: relative;
+      width: 400px;
+      .select_header {
+        display: flex;
+        color: #fff;
+        cursor: pointer;
+        align-items: center;
+        height: 64px;
+        padding-right: 60px;
+
+        .select_current {
+          font: 600 20px "ProximaNova", sans-serif;
+          margin-left: 60px;
+          padding-bottom: 2px;
+          width: 100%;
+          border-bottom: 1px solid #fff;
+        }
+        .select_icon {
+          width: 9px;
+          height: 10px;
+          background-image: url("../img/arrow_down.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+          margin-left: 25px;
+        }
+      }
+      .select_body {
+        display: none;
+        border: 1px solid #ccc;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 16px);
+        width: 360px;
+        padding: 20px 0;
+        .select_item {
+          padding-left: 60px;
+          height: 44px;
+          font: 600 20px "ProximaNova", sans-serif;
+          line-height: 44px;
+          cursor: pointer;
+          background: transparent;
+          color: #fff;
+          transition: all 0.2s ease;
+          &:hover {
+            background: #fff;
+            color: #000;
+          }
+        }
+      }
+
+      &.active {
+        .select_body {
+          display: block;
+        }
+      }
+    }
+
+    .category_select {
+      background: transparent;
+      color: #fff;
+      flex: 1;
+      padding: 0 60px;
+      border: 1px solid lightgreen;
+      height: 100%;
+      margin-right: 30px;
+      font: 600 20px "ProximaNova", sans-serif;
+      option {
+        background: #151515;
+        color: #fff;
+      }
+    }
+    .search_btn {
+      background-color: #fff;
+      color: #2b2b2b;
+      font: 600 20px "ProximaNova", sans-serif;
+      width: 360px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &::before {
+        content: "";
+        display: block;
+        background-image: url("../img/icon_search.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 24px;
+        height: 24px;
+        margin-right: 16px;
+      }
+    }
+  }
+}
+
+#about_us_section {
+  width: 100%;
+  padding: 100px 0 195px;
+  background: #fff;
+  .container {
+    margin: auto;
+    max-width: 1140px;
+    width: 100%;
+  }
+  .section_title {
+    font: bold 20px "ProximaNova", sans-serif;
+    text-transform: uppercase;
+    color: #0f0f0f;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    &::after {
+      display: block;
+      content: "";
+      width: 93%;
+      height: 1px;
+      background: #000;
+      margin-left: 15px;
+    }
+  }
+  .content {
+    display: flex;
+  }
+  .company_name {
+    flex: 1 0 45%;
+    width: 490px;
+    height: 49px;
+    background-image: url("../img/tomberg_&_partners.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .about_text {
+    font: 400 20px "ProximaNova", sans-serif;
+    color: #000;
+    flex: 1 0 55%;
+  }
+}
+
+#footer {
+  padding: 105px 0 33px;
+  width: 100%;
+  background: #151515;
+  position: relative;
+  .container {
+    max-width: 1140px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer_logo {
+    width: 407px;
+    height: 43px;
+    background-image: url("../img/tomber_&_partners_white.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .footer_menu {
+    margin-top: 80px;
+    width: 100%;
+    ul {
+      display: flex;
+      justify-content: space-around;
+      li {
+        a {
+          font: bold 25px "ProximaNova", sans-serif;
+          text-transform: uppercase;
+          color: #fff;
+        }
+      }
+    }
+  }
+  .social_media {
+    margin-top: 80px;
+    ul {
+      display: flex;
+      li {
+        width: 25px;
+        height: 25px;
+        margin-left: 12px;
+        &:first-child {
+          margin-left: 0;
+        }
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          background-repeat: no-repeat;
+          background-size: contain;
+          &.twitter {
+            background-image: url("../img/twitter.svg");
+          }
+          &.linkedin {
+            background-image: url("../img/linkedin.svg");
+          }
+          &.facebook {
+            background-image: url("../img/facebook.svg");
+          }
+        }
+      }
+    }
+  }
+  .contacts {
+    margin-top: 80px;
+    text-align: center;
+    p {
+      color: #fff;
+      text-transform: uppercase;
+      font: bold 16px "ProximaNova", sans-serif;
+    }
+  }
+  .copyright {
+    position: absolute;
+    bottom: 33px;
+    right: 88px;
+    font: 400 14px "ProximaNova", sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0.6;
+  }
+}
+
+.side_menu {
+  width: 50vw;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateX(120%);
+  z-index: 20;
+  &.show {
+    animation: show 0.7s ease forwards;
+  }
+  &.hide {
+    animation: hide 0.5s ease forwards;
+  }
+  &::after {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: #fff;
+    opacity: 0.93;
+    display: block;
+    content: '';
+  }
+  .content {
+    height: 100%;
+    width: 570px;
+    position: relative;
+    z-index: 10;
+    .menu_top {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 40px;
+      .search_icon {
+        width: 21px;
+        height: 21px;
+        display: block;
+        background-image: url('../img/icon_search.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      .close_btn {
+        width: 21px;
+        height: 21px;
+        display: block;
+        background-image: url('../img/icon_close.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+        margin-left: 70px;
+      }
+    }
+    .menu {
+      margin-top: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-right: 100px;
+      li {
+        margin-bottom: 12px;
+        a {
+          color: #2b2b2b;
+          text-transform: uppercase;
+          font: 400 35px 'ProximaNova', sans-serif;
+          &.active {
+            font-weight: bold;
+          }
+        }
+        &:first-child, &:nth-child(2) {
+          a {
+            display: flex;
+            align-items: center;
+            &::before {
+              content: '';
+              display: block;
+              margin-right: 12px;
+              background-image: url('../img/arrow_left.svg');
+              background-repeat: no-repeat;
+              background-size: contain;
+              width: 12px;
+              height: 13px;
+            }
+          }
+        }
+      }
+    }
+    .social_media {
+      position: absolute;
+      right: 100px;
+      bottom: 80px;
+      ul {
+        display: flex;
+        li {
+          margin-left: 12px;
+          &:first-child {
+            margin-left: 0;
+          }
+          a {
+            width: 25px;
+            height: 25px;
+            display: block;
+            background-repeat: no-repeat;
+            background-size: contain;
+            &.twitter {
+              background-image: url('../img/twitter_dark.svg');
+            }
+            &.linkedin {
+              background-image: url('../img/linkedin_dark.svg');
+            }
+            &.facebook {
+              background-image: url('../img/facebook_dark.svg');
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #header, #main, #offer_section, #search_section, #about_us_section, #footer {
+    padding: 0 20px;
+    .container {
+      max-width: 940px;
+    }
+  }
+
+  #header {
+    .content {
+      .logo_tomberg {
+        width: 187px;
+        height: 20px;
+        > img {
+          &.logo_desktop {
+            display: none;
+          }
+          &.logo_mobile {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  #main {
+    padding: 140px 20px 90px;
+    .content {
+      max-width: 600px;
+      margin-right: 340px;
+    }
+  }
+}

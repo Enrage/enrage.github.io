@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/main.css">
+  <title>Tomberg</title>
+</head>
+
+<body>
+  <div id="wrapper">
+    <header id="header">
+      <div class="container">
+        <div class="content">
+          <a href="/" class="logo_tomberg">
+            <img src="img/logo_tomberg.svg" alt="Tomberg" class="logo_desktop">
+            <img src="img/logo_tomberg_mobile.svg" alt="Tomberg" class="logo_mobile">
+          </a>
+          <nav id="top_menu">
+            <ul>
+              <li><a href="#">Услуги</a></li>
+              <li><a href="#">Консультации</a></li>
+              <li><a href="#">О нас</a></li>
+              <li><a href="#" class="search_btn"></a></li>
+              <li><a href="#" class="menu_btn"></a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="search_bar hidden">
+          <button class="search_btn"></button>
+          <input type="text" name="search" class="search_input" placeholder="Найти услугу">
+          <div class="search_close"></div>
+        </div>
+      </div>
+    </header>
+    <section id="main">
+      <div class="container">
+        <div class="content">
+          <h1 class="page_title">Мы не особенные. Мы лучшие.</h1>
+          <p class="main_text">Наша основная задача как юридической фирмы - предоставить клиенту оптимальные решения на основе тщательного изучения законодательной базы государства с целью улучшения состояния клиента. Это нужно делать правильно. С профессионализмом, знаниями и опытом, а также с уважением к клиенту, процессу и всем вовлеченным сторонам.</p>
+          <button class="contact_us">Связаться с нами</button>
+        </div>
+      </div>
+    </section>
+    <section id="offer_section">
+      <div class="container">
+        <h2 class="section_title">Мы предлагаем</h2>
+        <div class="offers">
+          <div class="offer">
+            <img src="img/offer_1.png" alt="Offer Tomberg" class="offer_img">
+            <h3 class="offer_title">Корпоративные услуги</h3>
+            <p class="offer_text">Регистрация компаний, налоговые услуги</p>
+          </div>
+          <div class="offer">
+            <img src="img/offer_2.svg" alt="Offer Tomberg" class="offer_img">
+            <h3 class="offer_title">Лицензирование деятельности</h3>
+            <p class="offer_text">Форекс, Гемблинг, EMI, Инвестиционная лицензия, криптолицензия.</p>
+          </div>
+          <div class="offer">
+            <img src="img/offer_3.svg" alt="Offer Tomberg" class="offer_img">
+            <h3 class="offer_title">Анонимность</h3>
+            <p class="offer_text">Разговор с Вами останется конфиденциальным</p>
+          </div>
+          <div class="offer">
+            <img src="img/offer_4.svg" alt="Offer Tomberg" class="offer_img">
+            <h3 class="offer_title">Банковский счет</h3>
+            <p class="offer_text">Готовые банковские решения в Европе, Азии, Америке, Англии и оффшорных банках.</p>
+          </div>
+          <div class="offer">
+            <img src="img/offer_5.svg" alt="Offer Tomberg" class="offer_img">
+            <h3 class="offer_title">Консультации</h3>
+            <p class="offer_text">Организация присутствия компании, крипто консультации, Виртуальный офис.</p>
+          </div>
+          <div class="offer">
+            <img src="img/offer_6.svg" alt="Offer Tomberg" class="offer_img">
+            <h3 class="offer_title">Быстрые решения</h3>
+            <p class="offer_text">Обратная связь в течение одного рабочего дня с предоставлением самого оптимального
+              решения</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="search_section">
+      <div class="container">
+        <div class="search_text">
+          <div class="search_icon"></div>
+          <input type="text" name="search" class="search_input" placeholder="Найти услугу">
+        </div>
+        <div class="search_select">
+          <div class="select_block">
+
+            <div class="select_box" id="offer_select">
+              <div class="select_header" onclick="select(this)">
+                <div class="select_current">Услуга</div>
+                <div class="select_icon"></div>
+              </div>
+              <div class="select_body">
+                <div class="select_item">Получение лицензии</div>
+                <div class="select_item">Регистрация компаний</div>
+                <div class="select_item">Банковские счета</div>
+                <div class="select_item">Консультации</div>
+              </div>
+            </div>
+
+            <div class="select_box" id="category_select">
+              <div class="select_header" onclick="select(this)">
+                <div class="select_current">Юрисдикция</div>
+                <div class="select_icon"></div>
+              </div>
+              <div class="select_body">
+                <div class="select_item">Юрисдикция 1</div>
+                <div class="select_item">Юрисдикция 2</div>
+                <div class="select_item">Юрисдикция 3</div>
+                <div class="select_item">Юрисдикция 4</div>
+                <div class="select_item">Юрисдикция 5</div>
+              </div>
+            </div>
+
+          </div>
+          <button type="button" class="search_btn">Поиск</button>
+        </div>
+      </div>
+    </section>
+    <section id="about_us_section">
+      <div class="container">
+        <h2 class="section_title">О нас</h2>
+        <div class="content">
+          <div class="company_name"></div>
+          <div class="about_text">Международная консалтинговая компания, занимающая лидирующие позиции на рынке услуг по регистрации компаний и открытию счетов за рубежом. Мы предоставляем услуги в области международного и налогового планирования, аудита, права, а так же в сфере инновационных финансовых технологий. Наши специалисты, исходя из ваших целей и бизнес задач, готовы предложить комплексный пакет услуг для широкого спектра деятельности. На сегодняшний день наша команда насчитывает более 15 сотрудников разного профиля. Мы осуществляем свою деятельность по всему миру, филиалы компании находятся в ряде европейских стран, с главным офисом в г. Таллин (Эстония).</div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer">
+      <div class="container">
+        <div class="footer_logo"></div>
+        <nav class="footer_menu">
+          <ul>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms and conditions</a></li>
+          </ul>
+        </nav>
+        <div class="social_media">
+          <ul>
+            <li><a href="https://twitter.com/" class="twitter" target="_blank"></a></li>
+            <li><a href="https://www.linkedin.cn/" class="linkedin" target="_blank"></a></li>
+            <li><a href="https://www.facebook.com/" class="facebook" target="_blank"></a></li>
+          </ul>
+        </div>
+        <div class="contacts">
+          <p>Status Symbol OÜ</p>
+          <p>Reg nr 14922826</p>
+          <p>Harju maakond, Tallinn, Kesklinna linnaosa, Maakri tn 19, 10145</p>
+        </div>
+      </div>
+      <div class="copyright">&copy; 2021 Tomberg & partners</div>
+    </footer>
+
+    <div class="side_menu">
+      <div class="content">
+        <div class="menu_top">
+          <a href="#" class="search_icon"></a>
+          <div class="close_btn"></div>
+        </div>
+        <ul class="menu">
+          <li><a href="#" class="active">Услуги</a></li>
+          <li><a href="#">Консультации</a></li>
+          <li><a href="#">О нас</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+        <div class="social_media">
+          <ul>
+            <li><a href="https://twitter.com/" class="twitter" target="_blank"></a></li>
+            <li><a href="https://www.linkedin.cn/" class="linkedin" target="_blank"></a></li>
+            <li><a href="https://www.facebook.com/" class="facebook" target="_blank"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function select(elem) {
+      let active = document.querySelectorAll('.active');
+      active.forEach(elem => elem.classList.remove('active'));
+      let selectItem = [...elem.nextElementSibling.children];
+
+      elem.addEventListener('click', e => e.target.closest('.select_box').classList.toggle('active'));
+
+      selectItem.forEach(item => item.addEventListener('click', e => {
+        const text = e.target.innerText;
+        const select = e.target.closest('.select_box');
+        const currentText = select.querySelector('.select_current');
+        currentText.innerText = text;
+        select.classList.remove('active');
+      }));
+    }
+
+    const searchBar = document.querySelector('.search_bar');
+    const headerContent = document.querySelector('#header .content');
+    const searchBtn = document.querySelector('.search_btn');
+    searchBtn.addEventListener('click', () => {
+      headerContent.classList.add('hidden');
+      searchBar.classList.remove('hidden');
+      searchBar.classList.add('show');
+    });
+
+    const searchClose = document.querySelector('.search_close');
+    searchClose.addEventListener('click', () => {
+      searchBar.classList.add('hidden');
+      searchBar.classList.remove('show');
+      headerContent.classList.remove('hidden');
+    });
+
+    const menuBtn = document.querySelector('.menu_btn');
+    const sideMenu = document.querySelector('.side_menu');
+    const closeBtn = document.querySelector('.side_menu .close_btn');
+    menuBtn.addEventListener('click', () => {
+      document.getElementById('wrapper').classList.add('menu_active');
+      sideMenu.classList.remove('hide');
+      sideMenu.classList.add('show');
+    });
+    closeBtn.addEventListener('click', () => {
+      document.getElementById('wrapper').classList.remove('menu_active');
+      sideMenu.classList.remove('show');
+      sideMenu.classList.add('hide');
+    });
+  </script>
+</body>
+</html>
