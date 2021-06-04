@@ -105,6 +105,8 @@ body {
   width: 100%;
   height: 100px;
   background: #fff;
+  position: relative;
+  z-index: 100;
   .container {
     margin: auto;
     max-width: 1140px;
@@ -217,12 +219,22 @@ body {
 #main {
   width: 100%;
   background-color: #2b2b2b;
-  background-image: url("../img/statue.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: right 0;
-  padding: 200px 0 300px;
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    background-image: url("../img/statue.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    width: 600px;
+    height: 900px;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+  }
   .container {
+    padding: 200px 0 300px;
     max-width: 1140px;
     width: 100%;
     margin: auto;
@@ -263,26 +275,28 @@ body {
 #offer_section {
   width: 100%;
   background: #fff;
-  padding: 66px 0 120px;
   .container {
+    padding: 66px 0 120px;
     margin: auto;
     max-width: 1140px;
     width: 100%;
   }
   .section_title {
-    font: bold 20px "ProximaNova", sans-serif;
-    text-transform: uppercase;
-    color: #0f0f0f;
     margin-bottom: 60px;
     display: flex;
     align-items: center;
-    &::after {
+    .title {
+      font: bold 20px "ProximaNova", sans-serif;
+      text-transform: uppercase;
+      color: #0f0f0f;
+      white-space: nowrap;
+    }
+    hr {
       display: block;
-      content: "";
-      width: 83%;
       height: 1px;
-      background: #000;
+      width: 100%;
       margin-left: 15px;
+      background: #000;
     }
   }
   .offers {
@@ -314,7 +328,6 @@ body {
 
 #search_section {
   width: 100%;
-  padding: 210px 0 300px;
   position: relative;
   &::before {
     content: "";
@@ -346,6 +359,7 @@ body {
     margin: auto;
     position: relative;
     z-index: 10;
+    padding: 210px 0 300px;
   }
   .search_text {
     display: flex;
@@ -376,13 +390,15 @@ body {
 
     .select_block {
       display: flex;
-      border: 1px solid #fff;
-      width: 800px;
+      border: 2px solid #fff;
+      max-width: 800px;
+      width: 100%;
     }
 
     .select_box {
       position: relative;
-      width: 400px;
+      max-width: 400px;
+      width: 50%;
       .select_header {
         display: flex;
         color: #fff;
@@ -399,8 +415,8 @@ body {
           border-bottom: 1px solid #fff;
         }
         .select_icon {
-          width: 9px;
-          height: 10px;
+          width: 13px;
+          height: 8px;
           background-image: url("../img/arrow_down.svg");
           background-repeat: no-repeat;
           background-size: contain;
@@ -409,13 +425,15 @@ body {
       }
       .select_body {
         display: none;
-        border: 1px solid #ccc;
+        border: 2px solid #fff;
         position: absolute;
+        z-index: 50;
         left: 0;
         right: 0;
         top: calc(100% + 16px);
-        width: 360px;
-        padding: 20px 0;
+        max-width: 360px;
+        width: 100%;
+        padding: 10px 0;
         .select_item {
           padding-left: 60px;
           height: 44px;
@@ -439,38 +457,29 @@ body {
       }
     }
 
-    .category_select {
-      background: transparent;
-      color: #fff;
-      flex: 1;
-      padding: 0 60px;
-      border: 1px solid lightgreen;
-      height: 100%;
-      margin-right: 30px;
-      font: 600 20px "ProximaNova", sans-serif;
-      option {
-        background: #151515;
-        color: #fff;
-      }
-    }
     .search_btn {
       background-color: #fff;
-      color: #2b2b2b;
-      font: 600 20px "ProximaNova", sans-serif;
       width: 360px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: block;
+      height: 68px;
       cursor: pointer;
+      span {
+        color: #2b2b2b;
+        font: 600 20px "ProximaNova", sans-serif;
+        line-height: 68px;
+        display: inline-block;
+      }
       &::before {
-        content: "";
-        display: block;
+        content: '';
+        display: inline-block;
         background-image: url("../img/icon_search.svg");
         background-repeat: no-repeat;
         background-size: contain;
         width: 24px;
         height: 24px;
-        margin-right: 16px;
+        margin-right: 10px;
+        position: relative;
+        top: 4px;
       }
     }
   }
@@ -478,24 +487,25 @@ body {
 
 #about_us_section {
   width: 100%;
-  padding: 100px 0 195px;
   background: #fff;
   .container {
     margin: auto;
     max-width: 1140px;
     width: 100%;
+    padding: 100px 0 195px;
   }
   .section_title {
-    font: bold 20px "ProximaNova", sans-serif;
-    text-transform: uppercase;
-    color: #0f0f0f;
     margin-bottom: 50px;
     display: flex;
     align-items: center;
-    &::after {
-      display: block;
-      content: "";
-      width: 93%;
+    .title {
+      font: bold 20px "ProximaNova", sans-serif;
+      text-transform: uppercase;
+      color: #0f0f0f;
+      white-space: nowrap;
+    }
+    hr {
+      width: 100%;
       height: 1px;
       background: #000;
       margin-left: 15px;
@@ -503,10 +513,10 @@ body {
   }
   .content {
     display: flex;
+    justify-content: space-between;
   }
   .company_name {
-    flex: 1 0 45%;
-    width: 490px;
+    flex: 0 1 45%;
     height: 49px;
     background-image: url("../img/tomberg_&_partners.svg");
     background-repeat: no-repeat;
@@ -515,19 +525,21 @@ body {
   .about_text {
     font: 400 20px "ProximaNova", sans-serif;
     color: #000;
-    flex: 1 0 55%;
+    flex: 0 1 52%;
   }
 }
 
 #footer {
-  padding: 105px 0 33px;
   width: 100%;
   background: #151515;
   position: relative;
   .container {
+    padding: 105px 0 33px;
     max-width: 1140px;
     width: 100%;
     margin: auto;
+  }
+  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -727,13 +739,15 @@ body {
 
 @media screen and (max-width: 1200px) {
   #header, #main, #offer_section, #search_section, #about_us_section, #footer {
-    padding: 0 20px;
     .container {
       max-width: 940px;
     }
   }
 
   #header {
+    .container {
+      padding: 0 20px;
+    }
     .content {
       .logo_tomberg {
         width: 187px;
@@ -751,10 +765,408 @@ body {
   }
 
   #main {
-    padding: 140px 20px 90px;
+    overflow-x: hidden;
+    &::before {
+      width: 430px;
+      height: 650px;
+      right: -40px;
+    }
+    .container {
+      padding: 140px 20px 90px;
+    }
     .content {
       max-width: 600px;
+      width: auto;
       margin-right: 340px;
+    }
+  }
+
+  #offer_section {
+    background: #2b2b2b;
+    .container {
+      padding: 56px 20px 100px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    .section_title {
+      margin: 0 auto 80px;
+      max-width: 750px;
+      width: 100%;
+    }
+    .offers {
+      justify-content: center;
+      .offer {
+        &:nth-child(2n+1) {
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+
+  #search_section {
+    .container {
+      padding: 200px 20px 280px;
+    }
+    .search_select {
+      .select_box {
+        .select_header {
+          padding-right: 40px;
+          .select_current {
+            margin-left: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  #about_us_section {
+    .container {
+      padding: 90px 20px 140px;
+    }
+  }
+
+  #footer {
+    .container {
+      padding: 105px 20px 60px;
+    }
+    .footer_menu {
+      ul {
+        li {
+          a {
+            font-size: 23px;
+          }
+        }
+      }
+    }
+    .copyright {
+      position: relative;
+      bottom: 0;
+      right: 0;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #offer_section {
+    .offers {
+      .offer {
+        max-width: 45%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #header {
+    .content {
+      #top_menu {
+        ul {
+          li {
+            a {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #main {
+    overflow-x: hidden;
+    .container {
+      padding: 140px 20px 50px;
+    }
+    &::before {
+      right: unset;
+      bottom: unset;
+      top: -60px;
+      left: 50%;
+      width: 398px;
+      height: 600px;
+      margin-left: -199px;
+    }
+    &::after {
+      width: 100%;
+      height: 520px;
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(to top,  rgba(43, 43, 43, 1) 0%, rgba(43, 43, 43, 0.98) 10%, rgba(43, 43, 43, 0.95) 20%, rgba(43, 43, 43, 0) 100%);
+      z-index: 50;
+    }
+    .content {
+      max-width: 100%;
+      width: 100%;
+      margin-top: 380px;
+      .page_title {
+        font-size: 28px;
+        margin-bottom: 24px;
+      }
+      .main_text {
+        font-size: 16px;
+        margin-bottom: 24px;
+      }
+    }
+  }
+
+  #offer_section {
+    .container {
+      padding: 50px 20px 30px;
+    }
+    .section_title {
+      margin-bottom: 28px;
+      .title {
+        font-size: 16px;
+      }
+    }
+    .offers {
+      .offer {
+        margin-bottom: 20px;
+        padding: 25px 8px;
+        &:nth-child(2n+1) {
+          margin-right: 20px;
+        }
+        .offer_img {
+          margin-bottom: 18px;
+          max-height: 48px;
+        }
+        .offer_title {
+          font-size: 12px;
+          margin-bottom: 9px;
+        }
+        .offer_text {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
+  #search_section {
+    .container {
+      padding: 150px 20px;
+    }
+    .search_text {
+      margin-bottom: 40px;
+      .search_icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+      }
+      .search_input {
+        font-size: 16px;
+        padding-bottom: 3px;
+      }
+    }
+
+    .search_select {
+      flex-direction: column;
+      height: 100%;
+      .select_block {
+        flex-direction: column;
+        border: none;
+      }
+      .select_box {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 40px;
+        .select_header {
+          border: 2px solid #fff;
+          height: 45px;
+          .select_current {
+            font-size: 16px;
+          }
+        }
+        .select_body {
+          top: calc(100% + 3px);
+          background: #fff;
+          max-width: 100%;
+          padding: 0;
+          border-bottom-left-radius: 5px;
+          border-bottom-right-radius: 5px;
+          .select_item {
+            padding-left: 18px;
+            background: #fff;
+            color: #0f0f0f;
+            font-size: 16px;
+            height: 28px;
+            line-height: 28px;
+            &:hover {
+              background: #dcdada;
+            }
+          }
+        }
+      }
+      .search_btn {
+        width: 100%;
+        height: 45px;
+        span {
+          font-size: 16px;
+          line-height: 45px;
+        }
+        &::before {
+          width: 14px;
+          height: 14px;
+          margin-right: 6px;
+          top: 1px;
+        }
+      }
+    }
+  }
+
+  #about_us_section {
+    .container {
+      padding: 50px 20px;
+    }
+    .section_title {
+      margin-bottom: 40px;
+      .title {
+        font-size: 16px;
+      }
+    }
+    .content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .company_name {
+      flex: auto;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 10px;
+    }
+    .about_text {
+      flex: auto;
+      font-size: 12px;
+      width: 100%;
+    }
+  }
+
+  #footer {
+    .container {
+      padding: 60px 20px 40px;
+    }
+    .content {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footer_logo {
+      width: 300px;
+      height: 32px;
+    }
+    .footer_menu {
+      margin-top: 42px;
+      ul {
+        flex-direction: column;
+        li {
+          margin-bottom: 16px;
+          a {
+            font-size: 18px;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    .social_media {
+      margin-top: 46px;
+      ul {
+        li {
+          width: 18px;
+          height: 18px;
+          margin-left: 10px;
+        }
+      }
+    }
+    .contacts {
+      text-align: left;
+      max-width: 160px;
+      margin-top: 30px;
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .copyright {
+      font-size: 14px;
+      position: absolute;
+      right: 20px;
+      bottom: 40px;
+      padding-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #header {
+    .content {
+      .logo_tomberg {
+        width: 130px;
+        height: 14px;
+      }
+    }
+  }
+
+  #main {
+    .content {
+      .page_title {
+        font-size: 16px;
+      }
+      .main_text {
+        font-size: 12px;
+      }
+      .contact_us {
+        width: 190px;
+        height: 40px;
+        font-size: 14px;
+        line-height: 40px;
+      }
+    }
+  }
+
+  #search_section {
+    .search_select {
+      .select_box {
+        .select_header {
+          padding-right: 20px;
+          .select_current {
+            margin-left: 20px;
+          }
+        }
+        .select_body {
+          .select_item {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  #footer {
+    .footer_logo {
+      width: 188px;
+      height: 20px;
+    }
+    .footer_menu {
+      ul {
+        li {
+          margin-bottom: 12px;
+          a {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .contacts {
+      p {
+        font-size: 8px;
+      }
+    }
+    .copyright {
+      font-size: 8px;
     }
   }
 }
