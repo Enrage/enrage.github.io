@@ -1,37 +1,37 @@
 @font-face {
-  font-family: "ProximaNova";
+  font-family: 'ProximaNova';
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/ProximaNova-Regular.eot");
-  src: local("Lato"),
-    url("../fonts/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/ProximaNova-Regular.woff2") format("woff2"),
-    url("../fonts/ProximaNova-Regular.woff") format("woff"),
-    url("../fonts/ProximaNova-Regular.ttf") format("truetype");
+  src: url('../fonts/ProximaNova-Regular.eot');
+  src: local('Lato'),
+    url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/ProximaNova-Regular.woff2') format('woff2'),
+    url('../fonts/ProximaNova-Regular.woff') format('woff'),
+    url('../fonts/ProximaNova-Regular.ttf') format('truetype');
   font-display: swap;
 }
 @font-face {
-  font-family: "ProximaNova";
+  font-family: 'ProximaNova';
   font-style: normal;
   font-weight: 600;
-  src: url("../fonts/ProximaNova-Semibold.eot");
-  src: local("Lato"),
-    url("../fonts/ProximaNova-Semibold.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/ProximaNova-Semibold.woff2") format("woff2"),
-    url("../fonts/ProximaNova-Semibold.woff") format("woff"),
-    url("../fonts/ProximaNova-Semibold.ttf") format("truetype");
+  src: url('../fonts/ProximaNova-Semibold.eot');
+  src: local('Lato'),
+    url('../fonts/ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/ProximaNova-Semibold.woff2') format('woff2'),
+    url('../fonts/ProximaNova-Semibold.woff') format('woff'),
+    url('../fonts/ProximaNova-Semibold.ttf') format('truetype');
   font-display: swap;
 }
 @font-face {
-  font-family: "ProximaNova";
+  font-family: 'ProximaNova';
   font-style: normal;
   font-weight: 700;
-  src: url("../fonts/ProximaNova-Bold.eot");
-  src: local("Lato"),
-    url("../fonts/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/ProximaNova-Bold.woff2") format("woff2"),
-    url("../fonts/ProximaNova-Bold.woff") format("woff"),
-    url("../fonts/ProximaNova-Bold.ttf") format("truetype");
+  src: url('../fonts/ProximaNova-Bold.eot');
+  src: local('Lato'),
+    url('../fonts/ProximaNova-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/ProximaNova-Bold.woff2') format('woff2'),
+    url('../fonts/ProximaNova-Bold.woff') format('woff'),
+    url('../fonts/ProximaNova-Bold.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -55,7 +55,7 @@ a {
 html,
 body {
   height: 100%;
-  font-family: "ProximaNova";
+  font-family: 'ProximaNova';
 }
 
 .hidden {
@@ -80,12 +80,30 @@ body {
   }
 }
 
+@keyframes show_menu {
+  from {
+    transform: translateX(120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes show_sub_menu {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 #wrapper {
   width: 100%;
   height: 100%;
   position: relative;
+  overflow-x: hidden;
   &.menu_active {
-    overflow: hidden;
     &::after {
       position: absolute;
       top: 0;
@@ -96,7 +114,7 @@ body {
       height: 100%;
       background: #000;
       opacity: 0.6;
-      z-index: 10
+      z-index: 10;
     }
   }
 }
@@ -151,13 +169,13 @@ body {
           }
           a {
             text-transform: uppercase;
-            font: bold 16px "ProximaNova", sans-serif;
+            font: bold 16px 'ProximaNova', sans-serif;
             color: #2b2b2b;
             &.menu_btn {
               width: 21px;
               height: 13px;
               display: block;
-              background-image: url("../img/icon_menu.svg");
+              background-image: url('../img/icon_menu.svg');
               background-repeat: no-repeat;
               background-size: contain;
             }
@@ -165,7 +183,7 @@ body {
               width: 13px;
               height: 13px;
               display: block;
-              background-image: url("../img/icon_search.svg");
+              background-image: url('../img/icon_search.svg');
               background-repeat: no-repeat;
               background-size: contain;
             }
@@ -177,6 +195,7 @@ body {
 
   .search_bar {
     display: flex;
+    align-items: center;
     width: 100%;
     position: absolute;
     transform: translateX(120%);
@@ -184,8 +203,8 @@ body {
       animation: show 0.7s ease-in-out forwards;
     }
 
-    .search_btn {
-      background-image: url("../img/icon_search.svg");
+    .search {
+      background-image: url('../img/icon_search.svg');
       background-repeat: no-repeat;
       background-size: contain;
       background-color: transparent;
@@ -193,21 +212,25 @@ body {
       height: 31px;
       margin-right: 25px;
       cursor: pointer;
+      flex-grow: 0;
+      flex-shrink: 0;
     }
     .search_input {
-      flex: 0 1 100%;
+      width: calc(100% - 152px);
       border: none;
       border-bottom: 1px solid #000;
       padding-bottom: 2px;
       text-transform: uppercase;
       color: #2b2b2b;
-      font: 400 25px "ProximaNova", sans-serif;
+      font: 400 25px 'ProximaNova', sans-serif;
       opacity: 0.5;
     }
     .search_close {
+      flex-grow: 0;
+      flex-shrink: 0;
       width: 21px;
       height: 21px;
-      background-image: url("../img/icon_close.svg");
+      background-image: url('../img/icon_close.svg');
       background-repeat: no-repeat;
       background-size: contain;
       margin-left: 35px;
@@ -223,7 +246,7 @@ body {
   &::before {
     content: '';
     display: block;
-    background-image: url("../img/statue.svg");
+    background-image: url('../img/statue.svg');
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
@@ -243,13 +266,13 @@ body {
     max-width: 620px;
     width: 100%;
     .page_title {
-      font: bold 35px "ProximaNova", sans-serif;
+      font: bold 35px 'ProximaNova', sans-serif;
       margin-bottom: 55px;
       text-transform: uppercase;
       color: #fff;
     }
     .main_text {
-      font: 400 20px "ProximaNova", sans-serif;
+      font: 400 20px 'ProximaNova', sans-serif;
       margin-bottom: 55px;
       color: #fff;
     }
@@ -259,7 +282,7 @@ body {
       text-align: center;
       background: #2b2b2b;
       color: #fff;
-      font: 400 20px "ProximaNova", sans-serif;
+      font: 400 20px 'ProximaNova', sans-serif;
       line-height: 63px;
       border: 1px solid #fff;
       border-radius: 2px;
@@ -286,7 +309,7 @@ body {
     display: flex;
     align-items: center;
     .title {
-      font: bold 20px "ProximaNova", sans-serif;
+      font: bold 20px 'ProximaNova', sans-serif;
       text-transform: uppercase;
       color: #0f0f0f;
       white-space: nowrap;
@@ -314,12 +337,12 @@ body {
       }
       .offer_title {
         color: #fff;
-        font: bold 20px "ProximaNova", sans-serif;
+        font: bold 20px 'ProximaNova', sans-serif;
         margin-bottom: 16px;
       }
       .offer_text {
         color: #fff;
-        font: 400 20px "ProximaNova", sans-serif;
+        font: 400 20px 'ProximaNova', sans-serif;
         opacity: 0.75;
       }
     }
@@ -330,9 +353,9 @@ body {
   width: 100%;
   position: relative;
   &::before {
-    content: "";
+    content: '';
     display: block;
-    background-image: url("../img/bg_search.png");
+    background-image: url('../img/bg_search.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -343,7 +366,7 @@ body {
     top: 0;
   }
   &::after {
-    content: "";
+    content: '';
     display: block;
     background-color: #151515;
     opacity: 0.9;
@@ -367,7 +390,7 @@ body {
     .search_icon {
       width: 60px;
       height: 60px;
-      background-image: url("../img/icon_search_white.svg");
+      background-image: url('../img/icon_search_white.svg');
       background-repeat: no-repeat;
       background-size: contain;
       margin-right: 40px;
@@ -378,7 +401,7 @@ body {
       background: transparent;
       color: #fff;
       text-transform: uppercase;
-      font: bold 35px "ProximaNova", sans-serif;
+      font: bold 35px 'ProximaNova', sans-serif;
     }
   }
 
@@ -408,7 +431,7 @@ body {
         padding-right: 60px;
 
         .select_current {
-          font: 600 20px "ProximaNova", sans-serif;
+          font: 600 20px 'ProximaNova', sans-serif;
           margin-left: 60px;
           padding-bottom: 2px;
           width: 100%;
@@ -417,7 +440,7 @@ body {
         .select_icon {
           width: 13px;
           height: 8px;
-          background-image: url("../img/arrow_down.svg");
+          background-image: url('../img/arrow_down.svg');
           background-repeat: no-repeat;
           background-size: contain;
           margin-left: 25px;
@@ -437,7 +460,7 @@ body {
         .select_item {
           padding-left: 60px;
           height: 44px;
-          font: 600 20px "ProximaNova", sans-serif;
+          font: 600 20px 'ProximaNova', sans-serif;
           line-height: 44px;
           cursor: pointer;
           background: transparent;
@@ -465,14 +488,14 @@ body {
       cursor: pointer;
       span {
         color: #2b2b2b;
-        font: 600 20px "ProximaNova", sans-serif;
+        font: 600 20px 'ProximaNova', sans-serif;
         line-height: 68px;
         display: inline-block;
       }
       &::before {
         content: '';
         display: inline-block;
-        background-image: url("../img/icon_search.svg");
+        background-image: url('../img/icon_search.svg');
         background-repeat: no-repeat;
         background-size: contain;
         width: 24px;
@@ -499,7 +522,7 @@ body {
     display: flex;
     align-items: center;
     .title {
-      font: bold 20px "ProximaNova", sans-serif;
+      font: bold 20px 'ProximaNova', sans-serif;
       text-transform: uppercase;
       color: #0f0f0f;
       white-space: nowrap;
@@ -518,12 +541,12 @@ body {
   .company_name {
     flex: 0 1 45%;
     height: 49px;
-    background-image: url("../img/tomberg_&_partners.svg");
+    background-image: url('../img/tomberg_&_partners.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
   .about_text {
-    font: 400 20px "ProximaNova", sans-serif;
+    font: 400 20px 'ProximaNova', sans-serif;
     color: #000;
     flex: 0 1 52%;
   }
@@ -547,7 +570,7 @@ body {
   .footer_logo {
     width: 407px;
     height: 43px;
-    background-image: url("../img/tomber_&_partners_white.svg");
+    background-image: url('../img/tomber_&_partners_white.svg');
     background-repeat: no-repeat;
     background-size: contain;
   }
@@ -559,7 +582,7 @@ body {
       justify-content: space-around;
       li {
         a {
-          font: bold 25px "ProximaNova", sans-serif;
+          font: bold 25px 'ProximaNova', sans-serif;
           text-transform: uppercase;
           color: #fff;
         }
@@ -584,13 +607,13 @@ body {
           background-repeat: no-repeat;
           background-size: contain;
           &.twitter {
-            background-image: url("../img/twitter.svg");
+            background-image: url('../img/twitter.svg');
           }
           &.linkedin {
-            background-image: url("../img/linkedin.svg");
+            background-image: url('../img/linkedin.svg');
           }
           &.facebook {
-            background-image: url("../img/facebook.svg");
+            background-image: url('../img/facebook.svg');
           }
         }
       }
@@ -602,14 +625,14 @@ body {
     p {
       color: #fff;
       text-transform: uppercase;
-      font: bold 16px "ProximaNova", sans-serif;
+      font: bold 16px 'ProximaNova', sans-serif;
     }
   }
   .copyright {
     position: absolute;
     bottom: 33px;
     right: 88px;
-    font: 400 14px "ProximaNova", sans-serif;
+    font: 400 14px 'ProximaNova', sans-serif;
     text-transform: uppercase;
     color: #fff;
     opacity: 0.6;
@@ -618,17 +641,14 @@ body {
 
 .side_menu {
   width: 50vw;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   right: 0;
   top: 0;
+  z-index: 150;
   transform: translateX(120%);
-  z-index: 20;
-  &.show {
-    animation: show 0.7s ease forwards;
-  }
-  &.hide {
-    animation: hide 0.5s ease forwards;
+  &.show_menu {
+    animation: show_menu 0.7s ease forwards;
   }
   &::after {
     position: absolute;
@@ -643,14 +663,23 @@ body {
     content: '';
   }
   .content {
-    height: 100%;
     width: 570px;
-    position: relative;
-    z-index: 10;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
     .menu_top {
       display: flex;
       justify-content: flex-end;
       margin-top: 40px;
+      position: relative;
+      z-index: 100;
+      .mobile_logo {
+        display: none;
+      }
+      .control_btns {
+        display: flex;
+      }
       .search_icon {
         width: 21px;
         height: 21px;
@@ -670,24 +699,30 @@ body {
         margin-left: 70px;
       }
     }
-    .menu {
-      margin-top: 40%;
+    > .menu {
+      margin-top: 20%;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       margin-right: 100px;
-      li {
+      position: relative;
+      z-index: 100;
+      > li {
         margin-bottom: 12px;
-        a {
+        > a {
           color: #2b2b2b;
           text-transform: uppercase;
           font: 400 35px 'ProximaNova', sans-serif;
-          &.active {
+          &.active_link {
             font-weight: bold;
           }
         }
-        &:first-child, &:nth-child(2) {
-          a {
+        .menu {
+          display: none;
+        }
+        &:first-child,
+        &:nth-child(2) {
+          > a {
             display: flex;
             align-items: center;
             &::before {
@@ -708,6 +743,7 @@ body {
       position: absolute;
       right: 100px;
       bottom: 80px;
+      z-index: 100;
       ul {
         display: flex;
         li {
@@ -737,8 +773,96 @@ body {
   }
 }
 
+.sub_menu {
+  width: 50vw;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 150;
+  transform: translateX(-120%);
+  &.show_sub_menu {
+    animation: show_sub_menu 0.7s ease forwards;
+  }
+  &::after {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: #fff;
+    opacity: 0.93;
+    display: block;
+    content: '';
+  }
+  .content {
+    width: 570px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .menu {
+      position: relative;
+      z-index: 100;
+      margin-left: 100px;
+      margin-top: 30%;
+      > li {
+        overflow: hidden;
+        > a {
+          font: 600 25px 'ProximaNova', sans-serif;
+          color: #2b2b2b;
+          display: block;
+          margin-top: 17px;
+          margin-bottom: 17px;
+          &.list {
+            &::after {
+              content: '';
+              display: inline-block;
+              margin-left: 10px;
+              width: 8px;
+              height: 9px;
+              background-image: url('../img/arrow_left.svg');
+              background-repeat: no-repeat;
+              background-size: contain;
+              transform: rotate(-90deg);
+              transition: all 0.3s ease;
+            }
+            &.active {
+              + ul {
+                display: block;
+              }
+              &::after {
+                transform: rotate(90deg);
+              }
+            }
+          }
+        }
+        ul {
+          padding-left: 24px;
+          display: none;
+          transition: 0.6s;
+          height: 0;
+          > li {
+            margin-bottom: 23px;
+            a {
+              font: 600 20px 'ProximaNova', sans-serif;
+              color: #2b2b2b;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1200px) {
-  #header, #main, #offer_section, #search_section, #about_us_section, #footer {
+  #header,
+  #main,
+  #offer_section,
+  #search_section,
+  #about_us_section,
+  #footer {
     .container {
       max-width: 940px;
     }
@@ -796,7 +920,7 @@ body {
     .offers {
       justify-content: center;
       .offer {
-        &:nth-child(2n+1) {
+        &:nth-child(2n + 1) {
           margin-right: 30px;
         }
       }
@@ -846,6 +970,30 @@ body {
       padding-bottom: 40px;
     }
   }
+
+  .side_menu {
+    .content {
+      max-width: 470px;
+      width: 100%;
+      .menu_top {
+        margin-right: 50px;
+      }
+      .menu {
+        margin-top: 30%;
+        margin-right: 50px;
+      }
+    }
+  }
+  .sub_menu {
+    .content {
+      max-width: 470px;
+      width: 100%;
+      .menu {
+        margin-top: 30%;
+        margin-left: 50px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -869,6 +1017,22 @@ body {
             }
           }
         }
+      }
+    }
+    .search_bar {
+      .search {
+        width: 13px;
+        height: 13px;
+        margin-right: 16px;
+      }
+      .search_input {
+        width: calc(100% - 97px);
+        font-size: 16px;
+      }
+      .search_close {
+        width: 12px;
+        height: 12px;
+        margin-left: 16px;
       }
     }
   }
@@ -895,7 +1059,13 @@ body {
       position: absolute;
       top: 0;
       left: 0;
-      background: linear-gradient(to top,  rgba(43, 43, 43, 1) 0%, rgba(43, 43, 43, 0.98) 10%, rgba(43, 43, 43, 0.95) 20%, rgba(43, 43, 43, 0) 100%);
+      background: linear-gradient(
+        to top,
+        rgba(43, 43, 43, 1) 0%,
+        rgba(43, 43, 43, 0.98) 10%,
+        rgba(43, 43, 43, 0.95) 20%,
+        rgba(43, 43, 43, 0) 100%
+      );
       z-index: 50;
     }
     .content {
@@ -927,7 +1097,7 @@ body {
       .offer {
         margin-bottom: 20px;
         padding: 25px 8px;
-        &:nth-child(2n+1) {
+        &:nth-child(2n + 1) {
           margin-right: 20px;
         }
         .offer_img {
@@ -1097,6 +1267,122 @@ body {
       bottom: 40px;
       padding-bottom: 0;
     }
+  }
+
+  .side_menu {
+    width: 100vw;
+    &::after {
+      opacity: 1;
+    }
+    .content {
+      max-width: 100%;
+      .menu_top {
+        margin-right: 35px;
+        margin-top: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 35px;
+        .mobile_logo {
+          display: block;
+          width: 120px;
+          height: 13px;
+          > img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .control_btns {
+          display: flex;
+          align-items: center;
+        }
+        .search_icon {
+          width: 12px;
+          height: 12px;
+        }
+        .close_btn {
+          width: 12px;
+          height: 12px;
+          margin-left: 35px;
+        }
+      }
+      > .menu {
+        margin-right: 35px;
+        margin-top: 60px;
+        margin-left: 35px;
+        > li {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          > a {
+            font-size: 25px;
+            font-weight: bold;
+          }
+          &:first-child, &:nth-child(2) {
+            > a {
+              &::before {
+                transform: rotate(-90deg);
+              }
+            }
+          }
+          .menu {
+            margin-top: 10px;
+            margin-right: 0;
+            display: block;
+            > li {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              text-align: right;
+              margin-bottom: 7px;
+              margin-top: 7px;
+              > a {
+                font: 600 15px 'ProximaNova', sans-serif;
+                color: #2b2b2b;
+                &.list {
+                  &::before {
+                    content: '';
+                    display: inline-block;
+                    margin-right: 10px;
+                    width: 6px;
+                    height: 7px;
+                    background-image: url('../img/arrow_left.svg');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    transform: rotate(-90deg);
+                    transition: all 0.3s ease;
+                    position: relative;
+                    top: -1px;
+                  }
+                }
+              }
+            }
+            .mobile_sub_menu {
+              height: 0;
+              overflow: hidden;
+              li {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                a {
+                  font: 600 12px 'ProximaNova', sans-serif;
+                  color: #2b2b2b;
+                }
+              }
+            }
+          }
+        }
+      }
+      .social_media {
+        right: 35px;
+        bottom: 35px;
+      }
+    }
+  }
+  .sub_menu {
+    display: none;
   }
 }
 

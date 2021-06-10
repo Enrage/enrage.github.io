@@ -30,7 +30,7 @@
         </div>
 
         <div class="search_bar hidden">
-          <button class="search_btn"></button>
+          <button class="search"></button>
           <input type="text" name="search" class="search_input" placeholder="Найти услугу">
           <div class="search_close"></div>
         </div>
@@ -173,12 +173,50 @@
     <div class="side_menu">
       <div class="content">
         <div class="menu_top">
-          <a href="#" class="search_icon"></a>
-          <div class="close_btn"></div>
+          <a href="/" class="mobile_logo">
+            <img src="img/logo_tomberg_mobile.svg" alt="Tomberg & Partners">
+          </a>
+          <div class="control_btns">
+            <a href="#" class="search_icon"></a>
+            <div class="close_btn"></div>
+          </div>
         </div>
         <ul class="menu">
-          <li><a href="#" class="active">Услуги</a></li>
-          <li><a href="#">Консультации</a></li>
+          <li>
+            <a href="#" class="services">Услуги</a>
+            <ul class="services_menu menu hidden">
+              <li><a href="#" class="list">Учерждение Компаний</a>
+                <ul class="mobile_sub_menu">
+                  <li><a href="#">Европейские Компании</a></li>
+                  <li><a href="#">Американские Компании</a></li>
+                  <li><a href="#">Северная Америка</a></li>
+                  <li><a href="#">Южная Америка</a></li>
+                  <li><a href="#">Африканские Компании</a></li>
+                  <li><a href="#">Азиатские Компании</a></li>
+                  <li><a href="#">Низконалоговые Зоны</a></li>
+                </ul>
+              </li>
+              <li><a href="#" class="list">Получение Лицензий</a>
+                <ul class="mobile_sub_menu">
+                  <li><a href="#">Форекс</a></li>
+                  <li><a href="#">Гемблинг</a></li>
+                  <li><a href="#">Криптолицензия</a></li>
+                  <li><a href="#">EMI</a></li>
+                  <li><a href="#">Инвестиционная Лицензия</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Банковские Счета</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="consult">Консультации</a>
+            <ul class="consult_menu menu hidden">
+              <li><a href="#">Налоговые Консультации И Оптимизация</a></li>
+              <li><a href="#">Организация Присутствия Компании</a></li>
+              <li><a href="#">Составление Международных Контрактов</a></li>
+              <li><a href="#">Крипто Консультации</a></li>
+              <li><a href="#">Виртуальный Офис Зарубежом</a></li>
+            </ul>
+          </li>
           <li><a href="#">О нас</a></li>
           <li><a href="#">Контакты</a></li>
         </ul>
@@ -191,8 +229,46 @@
         </div>
       </div>
     </div>
+
+    <div class="sub_menu">
+      <div class="content">
+        <ul class="services_menu menu hidden">
+          <li><a href="#" class="list">Учерждение Компаний</a>
+            <ul>
+              <li><a href="#">Европейские Компании</a></li>
+              <li><a href="#">Американские Компании</a></li>
+              <li><a href="#">Северная Америка</a></li>
+              <li><a href="#">Южная Америка</a></li>
+              <li><a href="#">Африканские Компании</a></li>
+              <li><a href="#">Азиатские Компании</a></li>
+              <li><a href="#">Низконалоговые Зоны</a></li>
+            </ul>
+          </li>
+          <li><a href="#" class="list">Получение Лицензий</a>
+            <ul>
+              <li><a href="#">Форекс</a></li>
+              <li><a href="#">Гемблинг</a></li>
+              <li><a href="#">Криптолицензия</a></li>
+              <li><a href="#">EMI</a></li>
+              <li><a href="#">Инвестиционная Лицензия</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Банковские Счета</a></li>
+        </ul>
+
+        <ul class="consult_menu menu hidden">
+          <li><a href="#">Налоговые Консультации И Оптимизация</a></li>
+          <li><a href="#">Организация Присутствия Компании</a></li>
+          <li><a href="#">Составление Международных Контрактов</a></li>
+          <li><a href="#">Крипто Консультации</a></li>
+          <li><a href="#">Виртуальный Офис Зарубежом</a></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
   <script>
+    // Custom selectbox
     function select(elem) {
       let active = document.querySelectorAll('.active');
       active.forEach(elem => elem.classList.remove('active'));
@@ -209,16 +285,17 @@
       }));
     }
 
+    // Header search
     const searchBar = document.querySelector('.search_bar');
     const headerContent = document.querySelector('#header .content');
     const searchBtn = document.querySelector('.search_btn');
-    searchBtn.addEventListener('click', () => {
+    const searchClose = document.querySelector('.search_close');
+    searchBtn.addEventListener('click', e => {
+      e.preventDefault();
       headerContent.classList.add('hidden');
       searchBar.classList.remove('hidden');
       searchBar.classList.add('show');
     });
-
-    const searchClose = document.querySelector('.search_close');
     searchClose.addEventListener('click', () => {
       searchBar.classList.add('hidden');
       searchBar.classList.remove('show');
@@ -231,13 +308,72 @@
     menuBtn.addEventListener('click', () => {
       document.getElementById('wrapper').classList.add('menu_active');
       sideMenu.classList.remove('hide');
-      sideMenu.classList.add('show');
+      sideMenu.classList.add('show_menu');
     });
+    // Menu close
     closeBtn.addEventListener('click', () => {
       document.getElementById('wrapper').classList.remove('menu_active');
-      sideMenu.classList.remove('show');
+      sideMenu.classList.remove('show_menu');
       sideMenu.classList.add('hide');
+      document.querySelector('.sub_menu').classList.remove('show_sub_menu');
+      const activeLink = document.querySelector('.active_link');
+      if (activeLink) activeLink.classList.remove('active_link');
     });
+
+    // Left menu show
+    const services = document.querySelector('.services');
+    const servicesMenu = document.querySelectorAll('.services_menu');
+    const consult = document.querySelector('.consult');
+    const consultMenu = document.querySelectorAll('.consult_menu');
+    document.querySelector('.services').addEventListener('click', e => {
+      e.preventDefault();
+      consult.classList.remove('active_link');
+      e.target.classList.add('active_link');
+      consultMenu.forEach(el => el.classList.add('hidden'));
+      servicesMenu.forEach(el => el.classList.remove('hidden'));
+      document.querySelector('.sub_menu').classList.add('show_sub_menu');
+    });
+    document.querySelector('.consult').addEventListener('click', e => {
+      e.preventDefault();
+      services.classList.remove('active_link');
+      e.target.classList.add('active_link');
+      if (!e.target.nextElementSibling.classList.contains('hidden')) {
+        e.target.nextElementSibling.classList.add('hidden');
+      }
+      servicesMenu.forEach(el => el.classList.add('hidden'));
+      consultMenu.forEach(el => el.classList.remove('hidden'));
+      document.querySelector('.sub_menu').classList.add('show_sub_menu');
+    })
+
+    // SubMenu
+    document.querySelectorAll('.menu .list').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const link = e.target;
+        const list = link.nextElementSibling;
+        if (!link.classList.contains('active')) {
+          link.classList.add('active');
+          list.style.height = 'auto';
+          let height = list.clientHeight + 'px';
+          list.style.height = '0px';
+          setTimeout(() => list.style.height = height, 0);
+        } else {
+          list.style.height = '0px';
+          list.addEventListener('transitionend', () => {
+            link.classList.remove('active');
+          }, {once: true});
+          link.classList.remove('active');
+        }
+      });
+    });
+
+    // if (window.innerWidth <= 767) {
+    //   alert('no');
+
+    // } else alert('no way');
+    // window.addEventListener('resize', (e) => {
+      // console.log(window.innerWidth); });
+    // if (window.)
   </script>
 </body>
 </html>
